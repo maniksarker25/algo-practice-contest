@@ -26,35 +26,22 @@ void dfs(int si,int sj){
 }
 int main()
 {
-
     cin >> n>>m;
     for(int i = 0;i<n;i++){
         for(int j = 0;j<m;j++){
            cin >> grid[i][j];
         }
     }
-    int si = -1,sj=-1;
-    int di =-1,dj=-1;
+    memset(vis,false,sizeof(vis));
+    int totalApartment =0;
     for(int i = 0;i<n;i++){
         for(int j = 0;j<m;j++){
-           if(grid[i][j] == 'A'){
-            si = i;
-            sj = j;
-           }
-           if(grid[i][j] == 'B'){
-            di = i;
-            dj = j;
-           }
+            if(vis[i][j] == false && grid[i][j] == '.'){
+                dfs(i,j);
+                totalApartment++;
+            }
         }
     }
-    memset(vis,false,sizeof(vis));
-    dfs(si,sj);
-
-    if(vis[di][dj] == true){
-        cout << "YES" << endl;
-    }
-    else{
-        cout << "NO" << endl;
-    }
+    cout << totalApartment << endl;
     return 0;
 }   
