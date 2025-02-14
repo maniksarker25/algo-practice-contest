@@ -42,16 +42,23 @@ void bfs(int si, int sj)
 
 int main()
 {
-    n = 8, m = 8;
-    string source, destination;
-    cin >> source >> destination;
-    int si = source[1] - '1';
-    int sj = source[0] - 'a';
-    int di = destination[1] - '1';
-    int dj = destination[0] - 'a';
-    memset(vis, false, sizeof(vis));
-    memset(level, -1, sizeof(level));
-    bfs(si, sj);
-    cout << level[di][dj] << endl;
+
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        n = 8, m = 8;
+        string source, destination;
+        cin >> source >> destination;
+        int si = source[1] - '1';
+        int sj = source[0] - 'a';
+        int di = destination[1] - '1';
+        int dj = destination[0] - 'a';
+        memset(vis, false, sizeof(vis));
+        memset(level, -1, sizeof(level));
+        bfs(si, sj);
+        cout << level[di][dj] << endl;
+    }
+
     return 0;
 }
