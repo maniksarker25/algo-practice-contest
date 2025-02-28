@@ -4,8 +4,9 @@ using namespace std;
 class Edge
 {
 public:
-    int a, b, w;
-    Edge(int a, int b, int w)
+    int a, b;
+    long long int w;
+    Edge(int a, int b, long long int w)
     {
         this->a = a;
         this->b = b;
@@ -15,7 +16,7 @@ public:
 
 int n, e;
 vector<Edge> edge_list;
-int dis[1005];
+long long int dis[1005];
 bool cycle;
 
 void bellman_ford(int src)
@@ -26,8 +27,12 @@ void bellman_ford(int src)
     {
         for (auto ed : edge_list)
         {
-            int a = ed.a, b = ed.b, w = ed.w;
-            if (dis[a] != INT_MAX && dis[a] + w < dis[b])
+            int a, b;
+            long long int  w;
+            a = ed.a;
+            b = ed.b;
+            w = ed.w;
+            if (dis[a] != LLONG_MAX && dis[a] + w < dis[b])
             {
                 dis[b] = dis[a] + w;
             }
@@ -36,8 +41,12 @@ void bellman_ford(int src)
 
     for (auto ed : edge_list)
     {
-        int a = ed.a, b = ed.b, w = ed.w;
-        if (dis[a] != INT_MAX && dis[a] + w < dis[b])
+            int a, b;
+            long long int  w;
+            a = ed.a;
+            b = ed.b;
+            w = ed.w;
+        if (dis[a] != LLONG_MAX && dis[a] + w < dis[b])
         {
             cout << "Negative Cycle Detected" << endl;
             cycle = true;
@@ -51,12 +60,13 @@ int main()
     cin >> n >> e;
     for (int i = 1; i <= n; i++)
     {
-        dis[i] = INT_MAX;
+        dis[i] = LLONG_MAX;
     }
 
     while (e--)
     {
-        int a, b, w;
+        int a, b;
+        long long int w;
         cin >> a >> b >> w;
         edge_list.push_back(Edge(a, b, w));
     }
@@ -76,7 +86,7 @@ int main()
             int d;
             cin >> d;
 
-            if (dis[d] == INT_MAX)
+            if (dis[d] == LLONG_MAX)
             {
                 cout << "Not Possible" << endl;
             }
